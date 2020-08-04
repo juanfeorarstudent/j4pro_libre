@@ -1,23 +1,29 @@
 package com.j4pro.myapplication;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
-import android.support.v4.app.ActivityCompat;
+import android.net.Uri;
 import android.webkit.JavascriptInterface;
-import android.widget.Toast;
 
-public class WebAppInterface {
+public class WebAppInterface3 {
     Context mContext;
     private Location currentBestLocation = null;
 
     /** Instantiate the interface and set the context */
-    WebAppInterface(Context c) {
+    WebAppInterface3(Context c) {
         mContext = c;
+    }
+
+    @JavascriptInterface
+    public void compartirContenidojsWhsaap(String movil,String texto) {
+       Intent intent = new Intent(Intent.ACTION_VIEW);
+
+      String uri = "whatsapp://send?phone=" + movil+ "&text=" + texto;
+        intent.setData(Uri.parse(uri));
+       mContext.startActivity(intent);
     }
 
     /** Show a toast from the web page */
